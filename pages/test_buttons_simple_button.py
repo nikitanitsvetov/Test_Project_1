@@ -45,3 +45,4 @@ def test_require_text3(browser):
     elm = simple_page.browser.find_element(By.XPATH, '//div[@class = "card card-body"]//li[3]')
     text = browser.execute_script("return arguments[0].textContent;", elm)
     assert 'After pressing the button, the user should be shown confirmation that the button was pressed.' == text
+
