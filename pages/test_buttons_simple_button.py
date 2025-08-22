@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 from buttons_simple_button import SimpleButtonPage
 
-
 def test_button1_exist(browser):
     simple_page = SimpleButtonPage(browser)
     simple_page.open()
