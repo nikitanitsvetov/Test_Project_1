@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from simple_button import SimpleButtonPage
+from buttons_simple_button import SimpleButtonPage
 
 
 def test_button1_exist(browser):

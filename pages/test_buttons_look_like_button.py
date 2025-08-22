@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from look_like_button import LookLikeButton
+from buttons_look_like_button import LookLikeButton
 import pytest
 
 

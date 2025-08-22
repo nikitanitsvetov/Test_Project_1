@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
-from disable import DisablePage
+from buttons_disable import DisablePage
 
 
 def test_dropdown_exist(browser):
