@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
 
+
 def test_logo_is_visible(browser):
     main = Main(browser)
     main.open()
@@ -48,6 +49,14 @@ def test_main_menu_visible(browser):
     homepage.main_menu_button('Single checkbox').is_displayed()
     homepage.main_menu_button('Text area').is_displayed()
     homepage.main_menu_button('Select input').is_displayed()
+
+def test_footer_visible(browser):
+    homepage = Main(browser)
+    homepage.open()
+    homepage.contact_footer().is_displayed()
+    homepage.what_new_footer().is_displayed()
+    browser.find_element(By.CLASS_NAME, 'p-3').is_displayed()
+    browser.find_element(By.XPATH, '//footer//a[@href="https://www.qa-practice.com/"]').is_displayed()
 
 
 
