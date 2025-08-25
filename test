@@ -1,0 +1,1 @@
+//li[contains(text(), 'This is a required field')] - Xpath для какого либо текста

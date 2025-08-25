@@ -6,6 +6,7 @@ import pytest
 
 text_input_tab = (By.XPATH, '//a[@href="/elements/input/simple"]')
 input_field = (By.CLASS_NAME, 'form-control')
+requirements = (By.ID, 'req_header')
 
 
 class Input(BasePage):

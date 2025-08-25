@@ -11,6 +11,8 @@ UI_selector = (By.CLASS_NAME, 'has-sub')
 sub_menu = (By.CSS_SELECTOR, '.sub-menu[style*="display: block"]')
 Contact = (By.XPATH, '//a[text()="Contact"]')
 what_new = (By.XPATH, '//a[@href="/whats_new/"]')
+requirements = (By.ID, 'req_header')
+
 
 
 
