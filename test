@@ -1,1 +1,8 @@
 //li[contains(text(), 'This is a required field')] - Xpath для какого либо текста
+//a[@data-qa="login"] Xpath lkz элемента
+
+
+WebbdriverWait(browser,10).until(EC.text_to_be_present_in_element(By),"Default welcome!")
+
+
+

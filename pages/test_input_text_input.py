@@ -7,8 +7,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 
-
-
 def test_redirect_from_main_page(browser):
     browser.get ('https://www.qa-practice.com/elements/input/simple')
     browser.find_element(By.CLASS_NAME, 'has-sub').click()
@@ -38,6 +36,18 @@ def test_input_invalid_text(browser):
     input_page.input_field().send_keys('Tets1')
     input_page.input_field().send_keys(Keys.RETURN)
     validation_message = browser.find_element(By.XPATH, '//p[1]')
+    validation_message.is_displayed()
+    input_page.input_field().is_displayed()
+    input_page.input_field().send_keys(Keys.BACKSPACE)
+    input_page.input_field().send_keys('T')
+    input_page.input_field().send_keys(Keys.RETURN)
+    validation_message = browser.find_element(By.XPATH, '//p[1]')
+    validation_message.is_displayed()
+    input_page.input_field().is_displayed()
+    input_page.input_field().send_keys(Keys.BACKSPACE)
+    input_page.input_field().send_keys('qweqweqweqweqweqweqweqweqweqweqwe')
+    input_page.input_field().send_keys(Keys.RETURN)
+    validation_message = browser.find_element(By.ID, 'error_1_id_text_string')
     validation_message.is_displayed()
 
 def test_requirements_text(browser):
