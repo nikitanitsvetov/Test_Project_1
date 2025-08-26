@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+import pytest
 
 
 
@@ -24,14 +25,17 @@ def test_input_valid_text(browser):
     validaton_window = browser.find_element(By.ID,'result')
     validaton_window.is_displayed()
 
-def test_input_invalid_text(browser):
+
+def data():
+    return ['T',' ','13123123123123123123123123123']
+@pytest.mark.parametrize("user_data", data())
+def test_input_invalid_text(browser, user_data):
     input_page = Input(browser)
     input_page.open()
     input_page.text_input_tab().is_displayed()
     assert 'Text string*' == browser.find_element(By.CLASS_NAME, 'requiredField').text
-    input_page.input_flow('T')
-    input_page.input_flow('')
-    input_page.input_flow('13123123123123123123123123123')
+    input_page.input_flow(user_data)
+
 
 def test_requirements_text(browser):
     input_page = Input(browser)
