@@ -4,7 +4,6 @@ from selenium.webdriver.common.keys import Keys
 
 from selenium.webdriver.remote.webelement import WebElement
 
-from pages.conftest import browser
 
 text_input_tab = (By.XPATH, '//a[@href="/elements/input/simple"]')
 requirements = (By.ID, 'req_header')
@@ -42,7 +41,6 @@ class Input(BasePage):
         return self.browser.find_element(By.XPATH, '//div[@class="collapse show"]//li[text()="'+text+'"]')
 
     def input_flow(self, text: str, submit: bool = True) -> bool:
-        """Полный flow: очистка, ввод, отправка, проверка валидации"""
         self.clear_input()
         self.input_field().send_keys(text)
         if submit:
