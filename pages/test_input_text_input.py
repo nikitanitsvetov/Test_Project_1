@@ -29,19 +29,9 @@ def test_input_invalid_text(browser):
     input_page.open()
     input_page.text_input_tab().is_displayed()
     assert 'Text string*' == browser.find_element(By.CLASS_NAME, 'requiredField').text
-    input_page.input_field().is_displayed()
-    input_page.input_field().send_keys('T')
-    input_page.submit()
-    input_page.is_validation_message_displayed()
-    input_page.clear_input()
-    input_page.input_field().send_keys("")
-    input_page.submit()
-    input_page.is_validation_message_displayed()
-    input_page.clear_input()
-    input_page.input_field().send_keys("123123123123123123123123123123")
-    input_page.submit()
-    input_page.is_validation_message_displayed()
-
+    input_page.input_flow('T')
+    input_page.input_flow('')
+    input_page.input_flow('13123123123123123123123123123')
 
 def test_requirements_text(browser):
     input_page = Input(browser)
