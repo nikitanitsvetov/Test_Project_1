@@ -7,14 +7,12 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 
-
 def test_redirect_from_main_page(browser):
     browser.get ('https://www.qa-practice.com/elements/input/simple')
     browser.find_element(By.CLASS_NAME, 'has-sub').click()
     browser.find_element(By.CSS_SELECTOR, '.sub-menu[style*="display: block"]').click()
     browser.find_element(By.XPATH,'//a[@href="/elements/input"]').click()
     browser.find_element(By.ID, 'content').is_displayed()
-
 
 def test_input_valid_text(browser):
     input_page = Input(browser)
@@ -43,7 +41,6 @@ def test_input_invalid_text(browser):
     input_page.input_field().send_keys("123123123123123123123123123123")
     input_page.submit()
     input_page.is_validation_message_displayed()
-
 
 
 def test_requirements_text(browser):
