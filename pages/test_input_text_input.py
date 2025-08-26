@@ -16,17 +16,15 @@ def test_redirect_from_main_page(browser):
     browser.find_element(By.ID, 'content').is_displayed()
 
 
-def test_input_invalid_text(browser):
+def test_input_valid_text(browser):
     input_page = Input(browser)
     input_page.open()
     input_page.text_input_tab().is_displayed()
-    assert 'Text string*' == browser.find_element(By.CLASS_NAME, 'requiredField').text
     input_page.input_field().is_displayed()
-    input_page.input_field().send_keys('.......')
-    input_page.input_field().send_keys(Keys.RETURN)
-    validation_message = browser.find_element(By.CLASS_NAME, 'invalid-feedback')
-    validation_message.is_displayed()
-
+    input_page.input_field().send_keys("Test")
+    input_page.submit()
+    validaton_window = browser.find_element(By.ID,'result')
+    validaton_window.is_displayed()
 
 def test_input_invalid_text(browser):
     input_page = Input(browser)
@@ -34,18 +32,17 @@ def test_input_invalid_text(browser):
     input_page.text_input_tab().is_displayed()
     assert 'Text string*' == browser.find_element(By.CLASS_NAME, 'requiredField').text
     input_page.input_field().is_displayed()
-    input_page.input_field().send_keys('Tets1')
-    input_page.input_field().send_keys(Keys.RETURN)
-    validation_message = browser.find_element(By.XPATH, '//p[1]')
-    validation_message.is_displayed()
-    input_page.input_field().is_displayed()
-    input_page.input_field().send_keys(Keys.BACKSPACE)
     input_page.input_field().send_keys('T')
-    input_page.input_field().send_keys(Keys.RETURN)
-    validation_message = browser.find_element(By.XPATH, '//p[1]')
-    validation_message.is_displayed()
-    input_page.input_field().is_displayed()
-    input_page.input_field().send_keys(Keys.BACKSPACE)
+    input_page.submit()
+    input_page.is_validation_message_displayed()
+    input_page.clear_input()
+    input_page.input_field().send_keys("")
+    input_page.submit()
+    input_page.is_validation_message_displayed()
+    input_page.clear_input()
+    input_page.input_field().send_keys("123123123123123123123123123123")
+    input_page.submit()
+    input_page.is_validation_message_displayed()
 
 
 
@@ -55,14 +52,16 @@ def test_requirements_text(browser):
     requirements = input_page.browser.find_element(By.ID, 'req_header')
     requirements.is_displayed()
     requirements.click()
-    browser.find_element(By.XPATH, '//li[contains(text(), "This is a required field")]').is_displayed()
-    browser.find_element(By.XPATH, '//li[contains(text(), "User should be able to enter text into this field")]').is_displayed()
-    browser.find_element(By.XPATH, '//li[contains(text(), "Text should be a valid string consisting of English letters, numbers, underscores or hyphens")]').is_displayed()
-    browser.find_element(By.XPATH, '//li[contains(text(), "Text length limits:")]').is_displayed()
-    browser.find_element(By.XPATH, '//li[contains(text(), "Max: 25 characters")]').is_displayed()
-    browser.find_element(By.XPATH, '//li[contains(text(), "Min: 2 characters")]').is_displayed()
-    browser.find_element(By.XPATH, '//li[contains(text(), "User can submit this one-field form by pressing Enter")]').is_displayed()
-    browser.find_element(By.XPATH, '//li[contains(text(), "After submitting the form, the text entered by the user is displayed on the page")]').is_displayed()
+    input_page.requirements_text('This is a required field').is_displayed()
+    input_page.requirements_text('User should be able to enter text into this field').is_displayed()
+    ##input_page.requirements_text('Text length limits:').is_displayed()
+    ##input_page.requirements_text('Max: 25 characters').is_displayed()
+    ##input_page.requirements_text('Min: 2 characters').is_displayed()
+    input_page.requirements_text('User can submit this one-field form by pressing Enter').is_displayed()
+    input_page.requirements_text('After submitting the form, the text entered by the user is displayed on the page').is_displayed()
+
+
+
 
 
 

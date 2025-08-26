@@ -1,11 +1,13 @@
 from base_page import BasePage
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
 from selenium.webdriver.remote.webelement import WebElement
 
 import pytest
 
+
 text_input_tab = (By.XPATH, '//a[@href="/elements/input/simple"]')
-input_field = (By.CLASS_NAME, 'form-control')
 requirements = (By.ID, 'req_header')
 
 
@@ -23,6 +25,22 @@ class Input(BasePage):
     def text_input_tab(self):
         return self.find(text_input_tab)
 
+
     def input_field(self):
-        return self.find(input_field)
+        return self.browser.find_element(By.XPATH, '//*[@placeholder = "Submit me"] ')
+
+    def clear_input(self):
+        self.input_field().clear()
+
+    def submit(self):
+        self.input_field().send_keys(Keys.RETURN)
+
+    def is_validation_message_displayed(self):
+        validation_message = self.browser.find_element(By.ID, 'error_1_id_text_string')
+        return validation_message.is_displayed()
+
+    def requirements_text(self, text: str) -> WebElement:
+        return self.browser.find_element(By.XPATH, '//div[@class="collapse show"]//li[text()="'+text+'"]')
+
+
 
