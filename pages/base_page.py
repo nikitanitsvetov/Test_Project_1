@@ -1,5 +1,5 @@
 from selenium.webdriver.ie.webdriver import WebDriver
-import pytest
+
 
 
 
