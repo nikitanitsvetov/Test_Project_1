@@ -15,14 +15,14 @@ class Input(BasePage):
 
     def open(self):
         return self.browser.get(f'https://www.qa-practice.com/elements/input')
-
+##
 
     def sub_menu_button(self, text: str) -> WebElement:
         return self.browser.find_element(By.XPATH, '//ul[@class="sub-menu"]//a[text()="'+text+'"]')
 
     def text_input_tab(self):
         return self.find(text_input_tab)
-
+##
 
     def input_field(self):
         return self.browser.find_element(By.XPATH, '//*[@placeholder = "Submit me"] ')
@@ -37,14 +37,17 @@ class Input(BasePage):
         validation_message = self.browser.find_element(By.ID, 'error_1_id_text_string')
         return validation_message.is_displayed()
 
-    def requirements_text(self, text: str) -> WebElement:
-        return self.browser.find_element(By.XPATH, '//div[@class="collapse show"]//li[text()="'+text+'"]')
-
     def input_flow(self, text: str, submit: bool = True) -> bool:
         self.clear_input()
         self.input_field().send_keys(text)
         if submit:
             self.submit()
         return self.is_validation_message_displayed()
+
+    ##
+
+    def requirements_text(self, text: str) -> WebElement:
+        requirement_text = self.browser.find_element(By.XPATH, '//div[@class="collapse show"]//li[contains(text(),"'+text+'")]')
+        return requirement_text
 
 
