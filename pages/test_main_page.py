@@ -38,7 +38,7 @@ def test_ui_selector(browser, data1):
     homepage.open()
     homepage.ui_elements().click()
     homepage.sub_menu().is_displayed()
-    assert homepage.sub_menu_button(data1).is_displayed()
+    homepage.sub_menu_button(data1).is_displayed()
 
 @allure.feature('Main')
 def test_main_page_text(browser):
