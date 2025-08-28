@@ -1,9 +1,10 @@
 from input_text_input import Input
 from selenium.webdriver.common.by import By
 import pytest
+import allure
 
 
-
+@allure.feature('Input_text')
 def test_redirect_from_main_page(browser):
     browser.get ('https://www.qa-practice.com/elements/input/simple')
     browser.find_element(By.CLASS_NAME, 'has-sub').click()
@@ -11,6 +12,7 @@ def test_redirect_from_main_page(browser):
     browser.find_element(By.XPATH,'//a[@href="/elements/input"]').click()
     browser.find_element(By.ID, 'content').is_displayed()
 
+@allure.feature('Input_text')
 def test_input_valid_text(browser):
     input_page = Input(browser)
     input_page.open()
@@ -19,10 +21,11 @@ def test_input_valid_text(browser):
     input_page.input_field().send_keys("Test")
     input_page.submit()
     validaton_window = browser.find_element(By.ID,'result')
-    validaton_window.is_displayed()
+    assert validaton_window.is_displayed()
 
 def data():
     return ['T',' ','13123123123123123123123123123']
+@allure.feature('Input_text')
 @pytest.mark.parametrize("user_data", data())
 def test_input_invalid_text(browser, user_data):
     input_page = Input(browser)
@@ -41,15 +44,15 @@ def datas():
         'User can submit this one-field form by pressing Enter',
         'After submitting the form, the text entered by the user is displayed on the page'
     ]
+@allure.feature('Input_text')
 @pytest.mark.parametrize("data", datas())
-
 def test_requirements_text(browser, data):
     input_page = Input(browser)
     input_page.open()
     requirements = input_page.browser.find_element(By.ID, 'req_header')
     requirements.is_displayed()
     requirements.click()
-    input_page.requirements_text(data)
+    assert input_page.requirements_text(data).is_displayed()
 
 
 

@@ -1,14 +1,15 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
-
 from buttons_disable import DisablePage
+import allure
 
-
+@allure.feature('Button_disable')
 def test_dropdown_exist(browser):
     dropdown = DisablePage(browser)
     dropdown.open()
     assert dropdown.dropdown_is_displayed()
 
+@allure.feature('Button_disable')
 def test_dropdown_click(browser):
     dropdown = DisablePage(browser)
     dropdown.open()
@@ -19,11 +20,13 @@ def test_dropdown_click(browser):
     dropdown.submit().click()
     assert 'Submitted' == dropdown.result_test()
 
+@allure.feature('Button_disable')
 def test_require_exist(browser):
     disable= DisablePage(browser)
     disable.open()
     assert disable.require()
 
+@allure.feature('Button_disable')
 def test_require_text1(browser):
     disable = DisablePage(browser)
     disable.open()
@@ -32,6 +35,7 @@ def test_require_text1(browser):
     text = browser.execute_script("return arguments[0].textContent;", elm)
     assert 'Submit button should be disabled by default.' == text
 
+@allure.feature('Button_disable')
 def test_require_text2(browser):
     disable = DisablePage(browser)
     disable.open()
@@ -40,6 +44,7 @@ def test_require_text2(browser):
     text = browser.execute_script("return arguments[0].textContent;", elm)
     assert 'User should be able to enable and then disable the button using the options of the Select state dropdown.' == text
 
+@allure.feature('Button_disable')
 def test_require_text3(browser):
     disable = DisablePage(browser)
     disable.open()
@@ -48,6 +53,7 @@ def test_require_text3(browser):
     text = browser.execute_script("return arguments[0].textContent;", elm)
     assert 'The option selected in the dropdown should be applied to the button immediately.' == text
 
+@allure.feature('Button_disable')
 def test_require_text4(browser):
     disable = DisablePage(browser)
     disable.open()
