@@ -2,6 +2,7 @@
 //a[@data-qa="login"] Xpath для элемента
 //div[@class="collapse show"]//li[text()="'+text+'"] = путь для рандом эелемента
 //div[@class="collapse show"]//li[contains(text(),"'+text+'")] - примерное совпадение
+//label[contains(text(), 'One')]/../input[@type='checkbox']  - уровень выше / уровень ниже // тот же уровень
 
 
 
