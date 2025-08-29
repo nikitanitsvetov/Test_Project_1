@@ -2,3 +2,10 @@
 .venv
 .pytest_cache
 __pycache__
+allure-report/
+allure-results/
+results/
+.test-results/
+*.allure/
+.allure/
+.allure2/
