@@ -18,7 +18,6 @@ class SelectSingleSelect(BasePage):
 
 
 
-
     def dropdown(self):
         return self.browser.find_element(By.XPATH, '//select[@class="form-select"]')
 
@@ -47,7 +46,6 @@ class SelectSingleSelect(BasePage):
         actual_text = self.get_selected_text()
         assert actual_text == expected_text, f"Expected text: {expected_text}, but got: {actual_text}"
         return self
-
 
 
     def submit(self):
