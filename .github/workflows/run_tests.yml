@@ -28,10 +28,20 @@ jobs:
           pip install -r requirements.txt
           pip install allure-pytest
 
-      - name: Install Allure Commandline
+      - name: Install Allure Commandline manually
         run: |
+          # Устанавливаем необходимые утилиты
           sudo apt-get update
-          sudo apt-get install -y allure
+          sudo apt-get install -y wget
+          
+          # Скачиваем и устанавливаем Allure
+          wget https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
+          tar -zxvf allure-2.27.0.tgz
+          sudo mv allure-2.27.0 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
+          
+          # Проверяем установку
+          /opt/allure/bin/allure --version
           allure --version
 
       - name: Run tests with Allure
@@ -40,7 +50,7 @@ jobs:
 
       - name: Generate Allure report
         run: |
-          allure generate allure-results -o allure-report --clean
+          /opt/allure/bin/allure generate allure-results -o allure-report --clean
 
       - name: Upload Allure report
         uses: actions/upload-pages-artifact@v3
