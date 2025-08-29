@@ -47,7 +47,10 @@ class Input(BasePage):
     ##
 
     def requirements_text(self, text: str) -> WebElement:
-        requirement_text = self.browser.find_element(By.XPATH, '//div[@class="collapse show"]//li[contains(text(),"'+text+'")]')
-        return requirement_text
+        if '"' in text:
+            xpath = f"//div[@class='collapse show']//li[contains(text(), '{text}')]"
+        else:
+            xpath = f'//div[@class="collapse show"]//li[contains(text(), "{text}")]'
+        return self.browser.find_element(By.XPATH, xpath)
 
 

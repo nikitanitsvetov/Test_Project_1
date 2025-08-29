@@ -2,9 +2,6 @@ import pytest
 from checkboxes import Checkboxes
 import allure
 
-
-
-
 def data():
     return [
         'One',
