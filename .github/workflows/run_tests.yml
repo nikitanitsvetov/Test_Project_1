@@ -2,7 +2,7 @@ name: Automated tests
 
 on:
   push:
-    branches: [main, master]  # ← Добавьте триггер для веток
+    branches: [main, master]
 
 jobs:
   test:
@@ -10,35 +10,21 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4  # ← Обновите до v4
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v5  # ← Исправлено: setup-python вместо setup-Python и v5
+        uses: actions/setup-python@v5
         with:
           python-version: "3.13"
 
-      - name: Install Chrome
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget
-          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-
-      - name: Install ChromeDriver
-        run: |
-          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-          CHROME_MAJOR_VERSION=$(echo $CHROME_VERSION | cut -d'.' -f1)
-          wget -O chromedriver.zip "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAJOR_VERSION"
-          wget -O chromedriver.zip "https://chromedriver.storage.googleapis.com/$(cat chromedriver.zip)/chromedriver_linux64.zip"
-          unzip chromedriver.zip
-          sudo mv chromedriver /usr/local/bin/
-          chromedriver --version
+      - name: Setup Chrome and ChromeDriver
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
 
       - name: Install Dependencies
         run: |
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install -r requirements.txt
           pip install allure-pytest
 
