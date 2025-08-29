@@ -38,6 +38,7 @@ def req_messages():
         'The result can be sent using the Submit button',
         'After submitting the form, the option selected by the user is displayed on the page'
     ]
+
 @allure.feature('Requirements verification')
 @pytest.mark.parametrize('req_messages',req_messages())
 def test_requirements(browser,req_messages):
