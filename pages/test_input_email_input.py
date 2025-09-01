@@ -41,8 +41,6 @@ def datas():
 def test_requirements_text(browser, datas):
     input_page = Input_email(browser)
     input_page.open()
-    requirements = input_page.browser.find_element(By.ID, 'req_header')
-    requirements.is_displayed()
-    requirements.click()
+    input_page.requirement().click()
     assert input_page.requirements_text(datas).is_displayed()
 

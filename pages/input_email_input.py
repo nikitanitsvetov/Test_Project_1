@@ -39,6 +39,9 @@ class Input_email(BasePage):
 
     ##
 
+    def requirement(self):
+        return self.browser.find_element(By.XPATH, '//a[@id="req_header"]')
+
     def requirements_text(self, text: str) -> WebElement:
         if '"' in text:
             xpath = f"//div[@class='collapse show']//li[contains(text(), '{text}')]"
