@@ -3,7 +3,7 @@
 //div[@class="collapse show"]//li[text()="'+text+'"] = путь для рандом эелемента
 //div[@class="collapse show"]//li[contains(text(),"'+text+'")] - примерное совпадение
 //label[contains(text(), 'One')]/../input[@type='checkbox']  - уровень выше / уровень ниже // тот же уровень
-
+f'//*[contains(text(), "{text}")] - только по текстуё
 
 
 WebbdriverWait(browser,10).until(EC.text_to_be_present_in_element(By),"Default welcome!") = проверка прогрузки страницы

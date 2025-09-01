@@ -16,7 +16,7 @@ class SelectSingleSelect(BasePage):
     def title(self):
         return self.browser.find_element(By.XPATH, '//label[@class="form-label requiredField"]')
 
-
+##########################
 
     def dropdown(self):
         return self.browser.find_element(By.XPATH, '//select[@class="form-select"]')
@@ -47,6 +47,7 @@ class SelectSingleSelect(BasePage):
         assert actual_text == expected_text, f"Expected text: {expected_text}, but got: {actual_text}"
         return self
 
+######################
 
     def submit(self):
         return self.browser.find_element(By.XPATH, '//input[@id="submit-id-submit"]')
