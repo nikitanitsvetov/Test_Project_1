@@ -21,7 +21,7 @@ def test_open_new_page(browser):
 def request_mesages():
     return[
         'The link should open the page /elements/new_tab/new_page',
-        'The link should open the page /elements/new_tab/new_page'
+        'New page should be opened in a new tab'
     ]
 @allure.feature('Requirement')
 @pytest.mark.parametrize('request_mesages', request_mesages())
