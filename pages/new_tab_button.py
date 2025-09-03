@@ -2,7 +2,6 @@ from base_page import BasePage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebElement
 
-from pages.conftest import browser
 
 
 class NewTabButton(BasePage):
