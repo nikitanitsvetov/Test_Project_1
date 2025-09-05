@@ -16,10 +16,10 @@ def data():
 @pytest.mark.parametrize("user_data", data()) - дата провайдер
 
 
-    def input_flow(self, text: str, submit: bool = True) -> bool:
-        """Полный flow: очистка, ввод, отправка, проверка валидации"""
-        self.clear_input()
-        self.input_field().send_keys(text)
-        if submit:
-            self.submit()
-        return self.is_validation_message_displayed()
+def input_flow(self, text: str, submit: bool = True) -> bool:
+    """Полный flow: очистка, ввод, отправка, проверка валидации"""
+    self.clear_input()
+    self.input_field().send_keys(text)
+    if submit:
+        self.submit()
+    return self.is_validation_message_displayed()
