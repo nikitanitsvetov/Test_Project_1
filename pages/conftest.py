@@ -13,7 +13,8 @@ def browser():
     options.add_argument('--window-size=1920,1080')
     chrome_browser = webdriver.Chrome(options=options)
     chrome_browser.implicitly_wait(10)
-    return chrome_browser
+    yield chrome_browser
+    chrome_browser.quit()
 
 
 
