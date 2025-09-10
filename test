@@ -5,21 +5,52 @@
 //label[contains(text(), 'One')]/../input[@type='checkbox']  - уровень выше / уровень ниже // тот же уровень
 f'//*[contains(text(), "{text}")] - только по текстуё
 
+____________________________________________
 
 WebbdriverWait(browser,10).until(EC.text_to_be_present_in_element(By),"Default welcome!") = проверка прогрузки страницы
-
-
-
+____________________________________________
 
 def data():
     return ['T',' ','13123123123123123123123123123']
 @pytest.mark.parametrize("user_data", data()) - дата провайдер
 
+____________________________________________
 
 def input_flow(self, text: str, submit: bool = True) -> bool:
-    """Полный flow: очистка, ввод, отправка, проверка валидации"""
+ """Полный flow: очистка, ввод, отправка, проверка валидации"""
     self.clear_input()
     self.input_field().send_keys(text)
     if submit:
         self.submit()
     return self.is_validation_message_displayed()
+
+____________________________________________
+
+import psycopg2        - пример работы с БД
+from psycopg2 import sql
+
+class Database:
+    def __init__(self):
+        self.connection = psycopg2.connect(
+            host="localhost",
+            database="test_db",
+            user="postgres",
+            password="password",
+            port="5432"
+        )
+
+    def get_user_by_id(self, user_id):
+        with self.connection.cursor() as cursor:
+            cursor.execute(
+                "SELECT * FROM users WHERE id = %s",
+                (user_id,)
+            )
+            return cursor.fetchone()
+
+    def get_users_by_status(self, status):
+        with self.connection.cursor() as cursor:
+            cursor.execute(
+                "SELECT * FROM users WHERE status = %s",
+                (status,)
+            )
+            return cursor.fetchall()
