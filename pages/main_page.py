@@ -19,9 +19,18 @@ class Main(BasePage):
         with allure.step('Open Browser'):
             self.browser.get(f'https://www.qa-practice.com/')
 
+########
+
     def ui_elements(self):
         with allure.step('page text verification'):
             return self.find(UI_selector)
+
+    def logo_image(self):
+        return self.browser.find_element(By.XPATH, '//img[@class = "logo_image"]')
+
+    def button_poicture(self):
+        return self.browser.find_element(By.XPATH, '//i[@class="fa fa-th-large"]  ')
+
 
     def sub_menu(self):
         with allure.step('Sub menu verification'):
@@ -34,6 +43,8 @@ class Main(BasePage):
     def main_menu_button(self, text: str) -> WebElement:
         with allure.step('mein menu button verivication'):
             return self.browser.find_element(By.XPATH, '//ol[@class="rectangle"]//a[text()="'+text+'"]')
+
+########
 
     def contact_footer(self):
         with allure.step('First footer verification'):

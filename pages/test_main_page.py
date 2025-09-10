@@ -8,15 +8,13 @@ import allure
 def test_logo_is_visible(browser):
     main = Main(browser)
     main.open()
-    logo = main.browser.find_element(By.CLASS_NAME,'logo_image')
-    assert logo.is_displayed()
+    main.logo_image().is_displayed()
 
 @allure.feature('Main')
 def test_home_page_button_is_displayed(browser):
     homepage = Main(browser)
     homepage.open()
-    logo = homepage.browser.find_element(By.CLASS_NAME, 'fa-th-large')
-    assert logo.is_displayed()
+    homepage.button_poicture().is_displayed()
 
 def data1():
     return [
