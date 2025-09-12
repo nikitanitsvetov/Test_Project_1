@@ -3,13 +3,14 @@ from selenium.webdriver.common.by import By
 import pytest
 import allure
 
-
+@pytest.mark.smoke
 @allure.feature('Main')
 def test_logo_is_visible(browser):
     main = Main(browser)
     main.open()
     main.logo_image().is_displayed()
 
+@pytest.mark.smoke
 @allure.feature('Main')
 def test_home_page_button_is_displayed(browser):
     homepage = Main(browser)

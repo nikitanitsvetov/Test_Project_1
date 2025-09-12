@@ -54,3 +54,14 @@ class Database:
                 (status,)
             )
             return cursor.fetchall()
+
+____________________________________________
+
+@pytest.fixture(scope='session') - пример фикстуры для нескольких тестов
+def test()
+    print('')
+    yield
+    print()
+
+def test1(test)
+
